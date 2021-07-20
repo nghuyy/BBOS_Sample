@@ -1,0 +1,11 @@
+MIDlet-Name: MessageList
+MIDlet-Version: 1.0.1
+MIDlet-Vendor: Research In Motion Ltd.
+MIDlet-Jar-URL: MessageList.jar
+MIDlet-Jar-Size: 0
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-1: Message List Demo,res/img/messagelistdemo_jde.png,
+RIM-MIDlet-Flags-1: 0
+MIDlet-2: Message List Demo Startup,,startup
+RIM-MIDlet-Flags-2: 3

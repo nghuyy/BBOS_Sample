@@ -1,0 +1,9 @@
+MIDlet-Name: CommunicationAPILocalHelper
+MIDlet-Version: 0.9
+MIDlet-Vendor: <unknown>
+MIDlet-Jar-URL: CommunicationAPILocalHelper.jar
+MIDlet-Jar-Size: 0
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-1: Communication API Local Helper,img/communicationapidemo_jde.png,
+RIM-MIDlet-Flags-1: 0
