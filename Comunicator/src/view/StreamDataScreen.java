@@ -22,6 +22,7 @@ import huynguyen.bbos.Messages;
 import huynguyen.bbos.Net;
 import huynguyen.bbos.UI;
 import huynguyen.bbos.java.IMessageCallback;
+import huynguyen.bbos.sample.App;
 import net.rim.device.api.io.messaging.ByteMessage;
 import net.rim.device.api.io.messaging.Message;
 import net.rim.device.api.ui.Field;
@@ -51,28 +52,28 @@ public final class StreamDataScreen extends MainScreen
         _callback = new StreamDataScreenCallback(this);
 
         // Initialize UI components
+         /*
         LabelField instructions = new LabelField("", Field.NON_FOCUSABLE);
         _uriSenderField = new EditField("Upload URI:", CommunicationController.ECHO_SERVER_URI + "upload", 140, 0);
+        add(_uriSenderField);
 
         FullWidthButton backButton = new FullWidthButton("Back");
         backButton.setChangeListener(new FieldChangeListener()
         {
-            /**
-             * @see FieldChangeListener#fieldChanged(Field, int)
-             */
             public void fieldChanged(Field field, int context)
             {
                 ((UiApplication) (StreamDataScreen.this.getApplication())).popScreen(StreamDataScreen.this);
             }
         });
+        */
 
-        FullWidthButton postButton = new FullWidthButton("Send sample post");
+        FullWidthButton postButton = new FullWidthButton("POST");
         postButton.setChangeListener(new FieldChangeListener()
         {
             public void fieldChanged(Field field, int context)
             {
                 {
-                    new Net().POST("https://dev.vnapps.com/upload","user=test&pass=123", new IMessageCallback() {
+                    new Net().POST(App.HOST_URL + "/upload","user=test&pass=123", new IMessageCallback() {
                         public void onMessage(final String mess) {
                             UI.r(new Runnable() {
                                 public void run() {
@@ -85,8 +86,29 @@ public final class StreamDataScreen extends MainScreen
 
             }
         });
-        /*
-        postButton.setChangeListener(new FieldChangeListener()
+        FullWidthButton getButton = new FullWidthButton("GET");
+        getButton.setChangeListener(new FieldChangeListener()
+        {
+            public void fieldChanged(Field field, int context)
+            {
+                {
+                    new Net().GET(App.HOST_URL, new IMessageCallback() {
+                        public void onMessage(final String mess) {
+                            UI.r(new Runnable() {
+                                public void run() {
+                                    Dialog.alert("Success:" + mess);
+                                }
+                            });
+                        }
+                    });
+                }
+
+            }
+        });
+        add(getButton);
+
+        FullWidthButton originUpload = new FullWidthButton("Upload");
+        originUpload.setChangeListener(new FieldChangeListener()
         {
             public void fieldChanged(Field field, int context)
             {
@@ -101,14 +123,12 @@ public final class StreamDataScreen extends MainScreen
                 }
 
             }
-        });*/
+        });
 
-        // Add components to screen
-        add(backButton);
-        add(_uriSenderField);
+
         add(postButton);
         add(new SeparatorField());
-        add(instructions);
+        //add(instructions);
     }
 
 

@@ -23,11 +23,11 @@ Hlibs
 ExcludeFromBuildAll=0
 Exported=0
 [Files
-res\img\communicationapidemo_jde.png
 src\CommunicationAPIDemo.java
 src\CommunicationController.java
 src\CommunicationControllerListener.java
 src\config\config.xml
+src\huynguyen\bbos\sample\App.java
 src\local\CommunicationController.java
 src\local\LocalHelper.java
 src\local\MenuMainScreen.java
@@ -53,6 +53,7 @@ src\view\SendNonBlockRssScreen.java
 src\view\SendNonBlockSoapScreen.java
 src\view\SendNonBlockXmlScreen.java
 src\view\StreamDataScreen.java
+res\img\communicationapidemo_jde.png
 ]
 HaveAlxImports=0
 HaveDefs=0

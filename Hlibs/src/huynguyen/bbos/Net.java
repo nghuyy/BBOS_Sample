@@ -11,6 +11,20 @@ public class Net {
         this.context = new Context("AppContext");
     }
 
+    public void GET(String url, IMessageCallback _success) {
+        try {
+            URI uri = URI.create(url);
+            Messages messages = new Messages(_success);
+            SenderDestination senderDestination = DestinationFactory.createNonBlockingSenderDestination(context, uri, messages);
+            messages.setDestination(senderDestination);
+            ByteMessage message = senderDestination.createByteMessage();
+            ((HttpMessage) message).setMethod(HttpMessage.GET);
+            //message.setPriority(2);
+            ((NonBlockingSenderDestination)senderDestination).send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      *
      * @param url
@@ -22,18 +36,19 @@ public class Net {
             URI uri = URI.create(url);
             Messages messages = new Messages(_success);
             SenderDestination senderDestination = DestinationFactory.createNonBlockingSenderDestination(context, uri, messages);
+            messages.setDestination(senderDestination);
             ByteMessage message = senderDestination.createByteMessage();
             ((HttpMessage) message).setMethod(HttpMessage.POST);
             message.setStringPayload(payload);
-            message.setPriority(2);
-            //message.setTransportHeader("Ath", "1234");
+           // message.setPriority(2);
+           //message.setTransportHeader("Ath", "1234");
             message.setTransportHeader("Content-Type", "application/x-www-form-urlencoded");
             ((NonBlockingSenderDestination)senderDestination).send(message);
-            //TimeoutMonitor timeoutThread = new TimeoutMonitor(senderDestination, true, callback, responseListener, message);
-            //Thread t1 = new Thread(timeoutThread, "monitor");
-            //t1.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
 }
