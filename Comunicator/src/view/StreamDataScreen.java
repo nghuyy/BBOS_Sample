@@ -2,7 +2,7 @@
  * StreamDataScreen.java
  *
  * Copyright � 1998-2011 Research In Motion Ltd.
- * 
+ *
  * Note: For the sake of simplicity, this sample application may not leverage
  * resource bundles and resource strings.  However, it is STRONGLY recommended
  * that application developers make use of the localization features available
@@ -18,6 +18,10 @@ import com.rim.samples.device.communicationapidemo.CommunicationController;
 import com.rim.samples.device.communicationapidemo.ResponseCallback;
 import com.rim.samples.device.communicationapidemo.ui.FullWidthButton;
 
+import huynguyen.bbos.Messages;
+import huynguyen.bbos.Net;
+import huynguyen.bbos.UI;
+import huynguyen.bbos.java.IMessageCallback;
 import net.rim.device.api.io.messaging.ByteMessage;
 import net.rim.device.api.io.messaging.Message;
 import net.rim.device.api.ui.Field;
@@ -62,12 +66,28 @@ public final class StreamDataScreen extends MainScreen
             }
         });
 
-        FullWidthButton postButton = new FullWidthButton("Upload Data");
+        FullWidthButton postButton = new FullWidthButton("Send sample post");
         postButton.setChangeListener(new FieldChangeListener()
         {
-            /**
-             * @see FieldChangeListener#fieldChanged(Field, int)
-             */
+            public void fieldChanged(Field field, int context)
+            {
+                {
+                    new Net().POST("https://dev.vnapps.com/upload","user=test&pass=123", new IMessageCallback() {
+                        public void onMessage(final String mess) {
+                            UI.r(new Runnable() {
+                                public void run() {
+                                    Dialog.alert("Success:" + mess);
+                                }
+                            });
+                        }
+                    });
+                }
+
+            }
+        });
+        /*
+        postButton.setChangeListener(new FieldChangeListener()
+        {
             public void fieldChanged(Field field, int context)
             {
                 if(!_pending)
@@ -81,7 +101,7 @@ public final class StreamDataScreen extends MainScreen
                 }
 
             }
-        });
+        });*/
 
         // Add components to screen
         add(backButton);
@@ -105,7 +125,7 @@ public final class StreamDataScreen extends MainScreen
     {
         private StreamDataScreen _screen;
 
-        
+
         private StreamDataScreenCallback(StreamDataScreen screen)
         {
             _screen = screen;

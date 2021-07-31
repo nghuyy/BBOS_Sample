@@ -19,7 +19,9 @@ DependenciesInWorkspace=0
 [ManifestImports
 ]
 [Projects
+..\Hlibs\Hlibs.jdp
 Comunicate.jdp
 ]
 [ReleaseActiveProjects
+..\Hlibs\Hlibs.jdp
 ]

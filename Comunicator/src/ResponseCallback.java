@@ -19,6 +19,7 @@ import net.rim.device.api.ui.UiApplication;
 
 
 
+
 public abstract class ResponseCallback
 {
     private UiApplication _app;
