@@ -67,46 +67,6 @@ public final class StreamDataScreen extends MainScreen
         });
         */
 
-        FullWidthButton postButton = new FullWidthButton("POST");
-        postButton.setChangeListener(new FieldChangeListener()
-        {
-            public void fieldChanged(Field field, int context)
-            {
-                {
-                    new Net().POST(App.HOST_URL + "/upload","user=test&pass=123", new IMessageCallback() {
-                        public void onMessage(final String mess) {
-                            UI.r(new Runnable() {
-                                public void run() {
-                                    Dialog.alert("Success:" + mess);
-                                }
-                            });
-                        }
-                    });
-                }
-
-            }
-        });
-        FullWidthButton getButton = new FullWidthButton("GET");
-        getButton.setChangeListener(new FieldChangeListener()
-        {
-            public void fieldChanged(Field field, int context)
-            {
-                {
-                    new Net().GET(App.HOST_URL, new IMessageCallback() {
-                        public void onMessage(final String mess) {
-                            UI.r(new Runnable() {
-                                public void run() {
-                                    Dialog.alert("Success:" + mess);
-                                }
-                            });
-                        }
-                    });
-                }
-
-            }
-        });
-        add(getButton);
-
         FullWidthButton originUpload = new FullWidthButton("Upload");
         originUpload.setChangeListener(new FieldChangeListener()
         {
@@ -124,9 +84,7 @@ public final class StreamDataScreen extends MainScreen
 
             }
         });
-
-
-        add(postButton);
+        add(originUpload);
         add(new SeparatorField());
         //add(instructions);
     }

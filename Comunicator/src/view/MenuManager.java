@@ -16,6 +16,7 @@ package com.rim.samples.device.communicationapidemo.view;
 
 import com.rim.samples.device.communicationapidemo.CommunicationController;
 
+import huynguyen.bbos.sample.views.TestView;
 import net.rim.device.api.ui.UiApplication;
 
 
@@ -25,6 +26,7 @@ import net.rim.device.api.ui.UiApplication;
  */
 public final class MenuManager
 {
+    private final TestView _testView;
     private UiApplication _app;
     private CommunicationController _controller;
     private SendBlockScreen _sendBlockScreen;
@@ -52,9 +54,14 @@ public final class MenuManager
         _sendNonBlockXmlScreen = new SendNonBlockXmlScreen(_controller);
         _authenticationScreen = new AuthenticationScreen(_controller);
         _streamDataScreen = new StreamDataScreen(_controller);
+        _testView = new TestView(_controller);
     }
 
 
+    public void showTestScreen()
+    {
+        _app.pushScreen(_testView);
+    }
     /**
      * Pushes a new MenuMainScreen
      */
@@ -206,4 +213,6 @@ public final class MenuManager
     {
         _app.pushScreen(_sendNonBlockSoapScreen);
     }
+
+
 }

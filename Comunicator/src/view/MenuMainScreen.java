@@ -1,7 +1,7 @@
 /*
  * MenuMainScreen.java
  *
- * Copyright © 1998-2011 Research In Motion Ltd.
+ * Copyright ï¿½ 1998-2011 Research In Motion Ltd.
  * 
  * Note: For the sake of simplicity, this sample application may not leverage
  * resource bundles and resource strings.  However, it is STRONGLY recommended
@@ -71,6 +71,20 @@ public final class MenuMainScreen extends MainScreen
                 menuManger.showMenuReceiveScreen();
             }
         });
+
+        FullWidthButton testScreen = new FullWidthButton("Other Test");
+        testScreen.setChangeListener(new FieldChangeListener()
+        {
+            /**
+             * @see FieldChangeListener#fieldChanged(Field, int)
+             */
+            public void fieldChanged(Field field, int context)
+            {
+                menuManger.showTestScreen();
+            }
+        });
+        add(testScreen);
+
 
         receiveMessagesButton.setFocusListener(new FocusChangeListener()
         {

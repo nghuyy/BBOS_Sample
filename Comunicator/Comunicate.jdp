@@ -28,6 +28,7 @@ src\CommunicationController.java
 src\CommunicationControllerListener.java
 src\config\config.xml
 src\huynguyen\bbos\sample\App.java
+src\huynguyen\bbos\sample\views\TestView.java
 src\local\CommunicationController.java
 src\local\LocalHelper.java
 src\local\MenuMainScreen.java
