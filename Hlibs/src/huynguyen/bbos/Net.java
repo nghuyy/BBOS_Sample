@@ -15,7 +15,10 @@ public class Net {
         try {
             URI uri = URI.create(url);
             Messages messages = new Messages(_success);
-            SenderDestination senderDestination = DestinationFactory.createNonBlockingSenderDestination(context, uri, messages);
+            SenderDestination senderDestination = DestinationFactory.getSenderDestination(context.getName(),uri);
+            if(senderDestination == null) {
+                senderDestination =DestinationFactory.createNonBlockingSenderDestination(context, uri, messages);
+            }
             messages.setDestination(senderDestination);
             ByteMessage message = senderDestination.createByteMessage();
             ((HttpMessage) message).setMethod(HttpMessage.GET);
@@ -25,6 +28,7 @@ public class Net {
             e.printStackTrace();
         }
     }
+    
     /**
      *
      * @param url
@@ -35,7 +39,10 @@ public class Net {
         try {
             URI uri = URI.create(url);
             Messages messages = new Messages(_success);
-            SenderDestination senderDestination = DestinationFactory.createNonBlockingSenderDestination(context, uri, messages);
+            SenderDestination senderDestination = DestinationFactory.getSenderDestination(context.getName(),uri);
+            if(senderDestination == null) {
+                senderDestination =DestinationFactory.createNonBlockingSenderDestination(context, uri, messages);
+            }
             messages.setDestination(senderDestination);
             ByteMessage message = senderDestination.createByteMessage();
             ((HttpMessage) message).setMethod(HttpMessage.POST);
@@ -48,7 +55,4 @@ public class Net {
             e.printStackTrace();
         }
     }
-
-
-
 }
